@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BookManagment.Models.Publisher>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-primary">Index</h1>
+
+<p>
+    <a asp-action="Create" class="text-primary">Create New</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr class="table-primary">
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Edit | Details| Delete
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr class="table-primary">
+                <th scope="row">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </th>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

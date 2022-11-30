@@ -1,0 +1,77 @@
+﻿@model BookManagment.Models.Publisher
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@*<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/lib/jquery/jquery.min.js"></script>
+<script src="~/lib/jquery/jquery.slim.js"></script>
+<script src="~/lib/jquery/jquery.slim.min.js"></script>
+<a href="~/lib/jquery/jquery.min.map">~/lib/jquery/jquery.min.map</a>
+<a href="~/lib/jquery/jquery.slim.min.map">~/lib/jquery/jquery.slim.min.map</a>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#submit').click(function () {
+
+            SaveContact("/Dashboard/CreateAccaunt")
+
+        });
+
+
+        function SaveContact(path) {
+            var Name = $('#report_name').val();
+
+            var publisher = { Name: name };
+
+            $.ajax({
+                async: true,
+                type: 'POST',
+                dataType: 'JSON',
+                contentType: 'applcation/json; charset=utf-8',
+                data: Json.stringify(publisher),
+                url: ' ',
+                success: function (response) {
+                    if (response.success === true) {
+                        toastr.success(response.message, 'success ', {timeOut:300});
+                    }
+                    else {
+                           toastr.info(response.message, 'info', {timeOut:300});
+                    }
+                }
+                error:function(){
+                    toastr.error(response.message, 'Error',  { timeOut: 300 });
+                }
+            });
+        }
+    });
+
+</script>*@
+<h1 class="text-primary">Create</h1>
+
+<h4 class="text-primary">Publisher</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" id="report_name" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" onclick="sendData()" id="submit" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-light">Back to List</a>
+</div>
+
+
+
+
